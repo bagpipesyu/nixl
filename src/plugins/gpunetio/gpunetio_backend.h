@@ -173,8 +173,8 @@ private:
     docaHostState *host_state_cpu_ = nullptr;
     docaHostState *host_state_gpu_ = nullptr;
 
-    struct docaProgressState *progress_state_gpu;
-    struct docaProgressState *progress_state_cpu;
+    struct docaProgressState *progress_state_gpu = nullptr;
+    struct docaProgressState *progress_state_cpu = nullptr;
     std::vector<struct docaQpProgress *> qp_progress_gpu_;
     uint32_t *wait_exit_gpu;
     uint32_t *wait_exit_cpu;

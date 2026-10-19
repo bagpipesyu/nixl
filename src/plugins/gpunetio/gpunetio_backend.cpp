@@ -2278,6 +2278,10 @@ nixlDocaEngine::getNotifs(notif_list_t &notif_list) {
 
 nixl_status_t
 nixlDocaEngine::genNotif(const std::string &remote_agent, const std::string &msg) const {
+    nixl::doca::cudaDeviceGuard cuda_device(gdevs[0].first);
+    if (cuda_device.status() != cudaSuccess) {
+        return NIXL_ERR_BACKEND;
+    }
     if (hasFailed()) {
         return NIXL_ERR_BACKEND;
     }

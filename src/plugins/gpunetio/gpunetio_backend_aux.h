@@ -201,6 +201,10 @@ struct docaHostState {
     docaHostCompletion completions[DOCA_XFER_REQ_MAX];
 };
 
+static_assert(DOCA_XFER_REQ_MAX > 0 && DOCA_XFER_REQ_MAX <= 32 &&
+                  (DOCA_XFER_REQ_MAX & (DOCA_XFER_REQ_MAX - 1)) == 0,
+              "GPUNETIO progress requires a power-of-two ring with at most 32 slots");
+
 struct docaProgressState {
     docaHostState *host;
     uint32_t active_bitmap;
